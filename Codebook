@@ -22,17 +22,20 @@ Use of this dataset in publications must be acknowledged by referencing the foll
 [1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
 ==================================================================
 #Test Variables
-testFile: Contains the test set data from a txt file.
-testLabel: Contains the activity label for test set (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
-testSubject: Contains the subject numbers for the 30 volunteers ages 19-48. 
-variableNames: Contains the variables used for both test and train.
-bindedTestData: Binds the data for test subject, activity label, and test data.
+testFile: Contains the test set data from a txt file. 'data.frame':	2947 obs. of  561 variables. Numeric.
+testLabel: Contains the activity label for test set (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING). 'data.frame':	2947 obs. of  1 variable. Integer.
+testSubject: Dataframe. Contains the subject numbers for the 30 volunteers ages 19-48. 'data.frame':	2947 obs. of  1 variable. Integer.
+variableNames: Contains the variables used for both test and train. 'data.frame':	561 obs. of  2 variables. Integer and character.
+bindedTestData: Binds the data for test subject, activity label, and test data.'data.frame':	2947 obs. of  563 variables. Integer and numeric.
 
 #Train Variables
-trainFile: Contains the train set data from a txt file.
-trainLabel: Contains the activity label for train set (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
-trainSubject: Contains the subject numbers for the 30 volunteers ages 19-48. 
-bindedTrainData: Binds the data for train subject, activity label, and test data.
+trainFile: Contains the train set data from a txt file.data.frame':	7352 obs. of  561 variables: Numeric
+trainLabel: Contains the activity label for train set (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING). 'data.frame':	2947 obs. of  1 variable. Integer.
+trainSubject: Contains the subject numbers for the 30 volunteers ages 19-48. 'data.frame':	7352 obs. of  1 variable. Integer.
+bindedTrainData: Binds the data for train subject, activity label, and test data.'data.frame':	7352 obs. of  563 variables: Integer and numeric.
+
+==================================================================
+##Information about the data collected and the subsequent variables used in this project.
 
 The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
@@ -60,12 +63,14 @@ These signals were used to estimate variables of the feature vector for each pat
   fBodyGyroMag
   fBodyGyroJerkMag
 
+==================================================================
 #Merged Variables
-mergedData: Merges the bindedTestData and bindedTrainData together into a new dataframe.
-mergedDataSorted: Shows the mergedData frame in order based on subject number (from 1-10)
+mergedData: Merges the bindedTestData and bindedTrainData together into a new dataframe. 'data.frame':	10299 obs. of  563 variables: Integer and numeric.
+mergedDataSorted: Shows the mergedData frame in order based on subject number (from 1-10). 'data.frame':	10299 obs. of  563 variables: Integer, factor, and numeric
 mergedDataSorted$labels: as a factor, this includes the activity labels. levels = c(1, 2, 3, 4, 5, 6), labels = c("walking", "walking upstairs", "walking downstairs", "sitting", "standing", "laying"))
-mergedDataExtractedTest: Extracts the subject, labels, and then the variables showing just the mean and standard deviation(std) value in the mergedDataSorted dataframe.
+mergedDataExtractedTest: Extracts the subject, labels, and then the variables showing just the mean and standard deviation(std) value in the mergedDataSorted dataframe. 'data.frame':	10299 obs. of  68 variables: Integer, factor, and numeric
 mergedDataExtractedTest: Renamed the variables to Subject and Activity. Then gsub was used to change dashes to periods, and remove (). 
+
 Then variable names were changed in this way to provide additional clarity:
   "tBody" was replaced with "TimeBody"
   "fBody" was replaced with "FrequencyBody"
@@ -75,7 +80,7 @@ Then variable names were changed in this way to provide additional clarity:
   "Mag" was replaced with "Magnitude"
   
 ==================================================================
-## mergedDataExtractedTest:
+## mergedDataExtractedTest detailed information:
 
 'data.frame':	10299 obs. of  68 variables:
  $ Subject                                        : int  1 1 1 1 1 1 1 1 1 1 ...
@@ -148,7 +153,7 @@ Then variable names were changed in this way to provide additional clarity:
  $ FrequencyBodyBodyGyroscopeJerkMagnitude.std    : num  -0.991 -0.996 -0.995 -0.995 -0.995 ...
 
 ==================================================================
-## independentData: A dataframe copy of the mergedDataExtractedTest
+## independentData: A dataframe copy of the mergedDataExtractedTest. 'data.frame':	10299 obs. of  68 variables: Integer, factor, numeric.
 independentDataAverages2: The Independent Tidy Dataset. The dataset has N=180 rows and 68 columns. 180 rows have no missing values on any column.
 This dataframe is sorted by subject and activity, showing the mean of each variable. 
 
