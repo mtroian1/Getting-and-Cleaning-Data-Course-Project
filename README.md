@@ -99,7 +99,7 @@ mergedDataSorted$labels <- factor(mergedDataSorted$labels, levels = c(1, 2, 3, 4
 library(dplyr)
 mergedDataExtractedTest <- select(mergedDataSorted, contains(c("subject", "labels", "mean()", "std()")))
 
-# label the data set with descriptive variable names.
+## label the data set with descriptive variable names.
 #rename(new variable name = existing variable name)
 #gsub will replace the punctuation marks: dash to period
 #rename changes labels to activity. Then changes activity and subject to uppercase.
