@@ -73,7 +73,7 @@ colnames(trainFile) <- newNames
 
 bindedTrainData <- cbind(trainSubject, trainLabel, trainFile)
 
-## merge the bindedTestData and bindedTrainData together
+## Merge the bindedTestData and bindedTrainData together
 #Use 1:563 to specify we want to merge them based on their 563 common variables
 #all=TRUE to merge all data from x and y sets
 #no.dups prevents duplicates from being added in and doubling the variable amount
@@ -81,11 +81,11 @@ bindedTrainData <- cbind(trainSubject, trainLabel, trainFile)
 
 mergedData <- merge(bindedTestData, bindedTrainData, by.x = 1:563, by.y = 1:563, all = TRUE, no.dups = TRUE, sort = FALSE)
 
-## order data based on subject
+## Order data based on subject
 
 mergedDataSorted <- mergedData[order(mergedData$subject),]
 
-## add descriptive labels to mergedDataSorted$labels. 
+## Add descriptive labels to mergedDataSorted$labels. 
 #$labels is a numeric and needs to be changed to a factor. Assign it the six activity labels. 
 #Assign these updates to mergedDataSorted$labels to update the df
 
@@ -99,7 +99,7 @@ mergedDataSorted$labels <- factor(mergedDataSorted$labels, levels = c(1, 2, 3, 4
 library(dplyr)
 mergedDataExtractedTest <- select(mergedDataSorted, contains(c("subject", "labels", "mean()", "std()")))
 
-## label the data set with descriptive variable names.
+## Label the data set with descriptive variable names.
 #rename(new variable name = existing variable name)
 #gsub will replace the punctuation marks: dash to period
 #rename changes labels to activity. Then changes activity and subject to uppercase.
@@ -116,7 +116,7 @@ colnames(mergedDataExtractedTest) <- str_replace_all(colnames(mergedDataExtracte
 colnames(mergedDataExtractedTest) <- str_replace_all(colnames(mergedDataExtractedTest), "Mag", "Magnitude")
 colnames(mergedDataExtractedTest)
 
-## create a second, independent tidy data set with the average of each variable for each activity and each subject.
+## Create a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 library(data.table)
 independentData <- copy(mergedDataExtractedTest)
