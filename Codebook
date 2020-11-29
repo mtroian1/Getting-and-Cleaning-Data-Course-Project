@@ -1,0 +1,4 @@
+A code book describes the data in a data set, including variable names, descriptions, data formats (i.e. character / numeric), and any special coding conventions (e.g. K = thousands, M = Millions, B = Billions) etc.
+
+testFile:
+trainFile:
